@@ -1,0 +1,27 @@
+[project]
+name = "review-summary"
+version = "0.1.0"
+description = "Extracts the main themes from a set of Steam reviews, with sourced quotes."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "anthropic",
+    "fastembed",
+    "pandas",
+    "pydantic",
+    "python-dotenv",
+    "scikit-learn",
+    "tqdm",
+]
+
+[tool.uv]
+package = false
+
+# Not installed by `uv sync`. Run the tests with: uv run --group test pytest
+[dependency-groups]
+test = ["pytest"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = ["slow: downloads and runs the real embedding model"]
